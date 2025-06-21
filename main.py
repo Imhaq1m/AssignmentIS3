@@ -6,6 +6,7 @@ import numpy as np
 # To measure performance
 from sklearn.metrics import confusion_matrix, classification_report
 import matplotlib.pyplot as plt  # For drawing graphs (like accuracy over time)
+import seaborn as sns
 
 # Keras modules for building CNN models
 from tensorflow.keras.models import Sequential  # To build a layer-by-layer model
@@ -194,6 +195,14 @@ cm = confusion_matrix(y_true, y_pred)
 print("Classification Report:")
 print(classification_report(y_true, y_pred, target_names=class_names))
 
+# Plot confusion matrix
+plt.figure(figsize=(10, 8))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+            xticklabels=class_names, yticklabels=class_names)
+plt.xlabel('Predicted')
+plt.ylabel('True')
+plt.title('Confusion Matrix')
+plt.show()
 
 # -----------------------------
 # 11. Show Some Example Predictions
